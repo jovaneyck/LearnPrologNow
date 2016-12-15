@@ -5,6 +5,7 @@ word(anagram,a,n,a,g,r,a,m).
 word(connect,c,o,n,n,e,c,t).
 word(elegant,e,l,e,g,a,n,t).
 
+%! solves the crossword puzzle. %
 crossword(V1, V2, V3, H1, H2, H3) :-
 	word(H1,_,L12,_,L14,_,L16,_),
 	word(H2,_,L22,_,L24,_,L26,_),
