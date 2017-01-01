@@ -18,14 +18,21 @@ accLen([_|T], Acc, L) :-
 
 leng(List,Length) :- accLen(List,0,Length).
 
-% 1 < 2.
-% 2 =< 2.
-% 3 =:= 3.
-% 2 =\= 3.
-% 1 + 2 <= 3.
+% run tests using run_tests/0
+:- begin_tests(arithmetic).
 
-% 2 + 2 = 4 -> NO (unification)
-% 2 + 2 =:= 4 -> YES (EVALUATION)
+	test(lt) :- 1 < 2.
+	test(le) :- 2 =< 2.
+	test(eq) :- 3 =:= 3.
+	test(ne) :- 2 =\= 3.
+	test(evaluates_operands) :- 1 + 2 =:= 2 + 1.
+	test(
+		equality_does_not_evaluate_but_tries_to_unify, 
+		fail) :-
+		2 + 1 = 1 + 2.
+				
+:- end_tests(arithmetic).
+
 
 accMax([], Acc, Acc).
 accMax([X|Xs], Acc, Max) :-
